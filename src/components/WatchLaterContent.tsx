@@ -135,7 +135,7 @@ export default function WatchLaterContent() {
           // ✅ Your own DB watch later item
           if (!item.videoid?._id) return null;
           const cleanPath = item.videoid?.filepath?.replace(/\\/g, "/").replace(/^uploads\//, "");
-          const videoUrl = `http://localhost:5000/uploads/${cleanPath}`;
+          const videoUrl = `https://youtube-clone-rcez.onrender.com/uploads/${cleanPath}`;
  
           return (
             <div key={item._id} className="flex gap-4 group">

@@ -7,7 +7,7 @@ const videos = "/video/vdo.mp4";
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function VideoCard({ video }: any) {
   const cleanPath = video?.filepath?.replace(/\\/g, "/").replace(/^uploads\//, "");
-  const videoUrl = `http://localhost:5000/uploads/${cleanPath}`;
+  const videoUrl = `https://youtube-clone-rcez.onrender.com/uploads/${cleanPath}`;
  
   return (
     <Link href={`/watch/${video?._id}`} className="group">

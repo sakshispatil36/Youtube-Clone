@@ -85,7 +85,7 @@ const SearchResult = ({ query }: { query: string }) => {
           {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
           {dbVideos.map((vid: any) => {
             const cleanPath = vid.filepath?.replace(/\\/g, "/").replace(/^uploads\//, "");
-            const videoUrl = `http://localhost:5000/uploads/${cleanPath}`;
+            const videoUrl = `https://youtube-clone-rcez.onrender.com/uploads/${cleanPath}`;
             return (
               <div key={vid._id} className="flex gap-4 group">
                 <Link href={`/watch/${vid._id}`} className="flex-shrink-0">

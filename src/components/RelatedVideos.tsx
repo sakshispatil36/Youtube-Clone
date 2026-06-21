@@ -95,7 +95,7 @@ export default function RelatedVideos({ videos, currentTitle }: RelatedVideosPro
     <div className="space-y-3">
       {videos.map((video) => {
         const cleanPath = video.filepath?.replace(/\\/g, "/").replace(/^uploads\//, "");
-        const videoUrl = `http://localhost:5000/uploads/${cleanPath}`;
+        const videoUrl = `https://youtube-clone-rcez.onrender.com/uploads/${cleanPath}`;
         return (
           <Link
             key={video._id}

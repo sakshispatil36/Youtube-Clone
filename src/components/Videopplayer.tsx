@@ -10,7 +10,7 @@ interface VideoProps {
 export default function Videopplayer({ video }: VideoProps) {
   // ✅ Fix: safely clean filepath and build correct URL
   const cleanPath = video?.filepath?.replace(/\\/g, "/").replace(/^uploads\//, "");
-  const videoUrl = `http://localhost:5000/uploads/${cleanPath}`;
+  const videoUrl = `https://youtube-clone-rcez.onrender.com/uploads/${cleanPath}`;
 
   return (
     <div className="w-full bg-black rounded-2xl overflow-hidden shadow-lg">
