@@ -1,36 +1,57 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎥 YouTube Clone
 
-## Getting Started
+A full-stack video sharing platform inspired by YouTube, built using Next.js, React, Node.js, Express.js, MongoDB, and Firebase Authentication.
 
-First, run the development server:
+## 🚀 Live Demo
 
-```bash
+🌐 https://youtube-clone-videoverse.vercel.app
+
+## ✨ Features
+
+- User Authentication (Google Sign-In)
+- Video Upload & Playback
+- Search Videos
+- Search Suggestions
+- Like Videos
+- Comments System
+- Watch Later Playlist
+- Watch History
+- Channel Creation
+- Subscribe Functionality
+- Responsive Design
+- Modern YouTube-inspired UI
+
+## 🛠️ Tech Stack
+
+### Frontend
+- Next.js
+- React.js
+- TypeScript
+- Tailwind CSS
+- ShadCN UI
+
+### Backend
+- Node.js
+- Express.js
+- MongoDB
+- Firebase Authentication
+
+## 📸 Screenshots
+
+<p align="center">
+  <img src="./screenshots/Home-Page.png" width="45%">
+  <img src="./screenshots/WatchHistory-Page.png" width="45%">
+</p>
+
+<p align="center">
+  <img src="./screenshots/WatchLater-Page.png" width="45%">
+  <img src="./screenshots/LikedVideos-Page.png" width="45%">
+</p>
+
+## 📂 Installation
+
+bash
+git clone https://github.com/sakshispatil36/Youtube-Clone.git
+cd Youtube-Clone
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
