@@ -44,8 +44,8 @@ A full-stack video sharing platform inspired by YouTube, built using Next.js, Re
 </p>
 
 <p align="center">
-  <img src="./screenshots/WatchLater-Page.png" width="45%">
   <img src="./screenshots/LikedVideos-Page.png" width="45%">
+  <img src="./screenshots/WatchLater-Page.png" width="45%">
 </p>
 
 ## 📂 Installation
