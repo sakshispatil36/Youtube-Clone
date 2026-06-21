@@ -1,6 +1,6 @@
 import { Bell, Menu, Mic, Search, User, VideoIcon } from "lucide-react";
-import React, { useState, useRef, useEffect } from "react";
 import { Button } from "./ui/button";
+import React, { useState } from "react";
 import Link from "next/link";
 import { Input } from "./ui/input";
 import {
@@ -19,50 +19,17 @@ const Header = () => {
   const { user, logout, handlegooglesignin } = useUser();
   const [searchQuery, setSearchQuery] = useState("");
   const [isdialogeopen, setisdialogeopen] = useState(false);
-  const [suggestions, setSuggestions] = useState<string[]>([]);
-  const [showSuggestions, setShowSuggestions] = useState(false);
-  const suggestionsRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
 
-  useEffect(() => {
-    const timer = setTimeout(async () => {
-      if (!searchQuery.trim()) {
-        setSuggestions([]);
-        setShowSuggestions(false);
-        return;
-      }
-      try {
-        const res = await fetch(
-        `https://corsproxy.io/?url=${encodeURIComponent(`https://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=${searchQuery}`)}`
-      );
-        const data = await res.json();
-        setSuggestions(data[1]?.slice(0, 8) || []);
-        setShowSuggestions(true);
-      } catch {
-        setSuggestions([]);
-        setShowSuggestions(false);
-      }
-    }, 300);
-    return () => clearTimeout(timer);
-  }, [searchQuery]);
-
-  useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      if (suggestionsRef.current && !suggestionsRef.current.contains(e.target as Node)) {
-        setShowSuggestions(false);
-      }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
-
   const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (searchQuery.trim()) {
-      setShowSuggestions(false);
-      router.push(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
-    }
-  };
+  e.preventDefault();
+
+  if (searchQuery.trim()) {
+    router.push(
+      `/search?q=${encodeURIComponent(searchQuery.trim())}`
+    );
+  }
+};
 
   const handleKeypress = (e: React.KeyboardEvent) => {
     if (e.key === "Enter") {
@@ -71,11 +38,6 @@ const Header = () => {
     }
   };
 
-  const handleSuggestionClick = (suggestion: string) => {
-    setSearchQuery(suggestion);
-    setShowSuggestions(false);
-    router.push(`/search?q=${encodeURIComponent(suggestion)}`);
-  };
 
   return (
     <header className="flex items-center justify-between px-6 py-3 bg-white border-b sticky top-0 z-50">
@@ -98,7 +60,7 @@ const Header = () => {
         onSubmit={handleSearch}
         className="flex items-center gap-3 flex-1 max-w-3xl mx-8"
       >
-        <div className="flex flex-1 relative" ref={suggestionsRef}>
+        <div className="flex flex-1 relative">
           <div className="flex flex-1">
             <Input
               type="search"
@@ -106,7 +68,6 @@ const Header = () => {
               value={searchQuery}
               onKeyPress={handleKeypress}
               onChange={(e) => setSearchQuery(e.target.value)}
-              onFocus={() => suggestions.length > 0 && setShowSuggestions(true)}
               className="rounded-l-full border-r-0 focus-visible:ring-0 h-11 text-base px-5"
             />
             <Button
@@ -116,21 +77,6 @@ const Header = () => {
               <Search className="w-5 h-5" />
             </Button>
           </div>
-
-          {showSuggestions && suggestions.length > 0 && (
-          <div className="absolute top-full left-0 right-10 bg-white border border-gray-200 rounded-2xl shadow-xl z-50 mt-1 overflow-hidden py-2">
-            {suggestions.map((suggestion, index) => (
-              <div
-                key={index}
-                className="flex items-center gap-4 px-6 py-3 hover:bg-gray-100 cursor-pointer"
-                onClick={() => handleSuggestionClick(suggestion)}
-              >
-                <Search className="w-5 h-5 text-gray-500 flex-shrink-0" />
-                <span className="text-base text-gray-800">{suggestion}</span>
-              </div>
-            ))}
-          </div>
-        )}
         </div>
 
         <Button variant="ghost" size="icon" className="rounded-full w-11 h-11">
